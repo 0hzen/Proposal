@@ -71,32 +71,23 @@
     <h1>Will You Marry Me? 💍</h1>
     <div class="buttons">
         <button id="yes" onclick="sayYes()">Yes</button>
-        <button id="no" onmouseover="runAway()" onclick="makeYesBigger()">No</button>
+        <button id="no" onmouseover="runAway()">No</button>
     </div>
 
     <script>
-        let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
-        let yesSize = 20;
-
-        function makeYesBigger() {
-            yesSize += 10;
-            yesButton.style.fontSize = yesSize + "px";
-            yesButton.style.padding = (yesSize / 2) + "px " + (yesSize) + "px";
-            yesButton.style.boxShadow = `0 0 ${yesSize / 2}px rgba(40, 167, 69, 0.7)`;
-        }
 
         function runAway() {
-            let x = Math.random() * (window.innerWidth - 200);
-            let y = Math.random() * (window.innerHeight - 100);
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
             noButton.style.position = "absolute";
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         }
 
         function sayYes() {
-            document.body.style.backgroundColor = "#FFD700";
-            alert("Yay! I love you, Sanaa! ❤️");
+            document.querySelector('h1').innerText = "Thanks, my love";
+            document.querySelector('.buttons').style.display = 'none';
         }
     </script>
 </body>
