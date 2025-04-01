@@ -8,45 +8,64 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            margin-top: 100px;
-            transition: background-color 0.5s ease-in-out;
+            margin-top: 10vh;
+            overflow: hidden; /* Prevent scrolling */
         }
         h1 {
-            font-size: 36px;
+            font-size: 2.5rem;
         }
         .buttons {
-            position: relative;
-            display: inline-block;
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            height: 60vh; /* Ensure enough space for button movement */
         }
         button {
-            font-size: 20px;
-            padding: 15px 30px;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
             cursor: pointer;
             margin: 10px;
             border: none;
-            position: absolute;
+            border-radius: 10px;
             transition: all 0.3s ease-in-out;
         }
         #yes {
-            font-size: 20px;
             background-color: #28a745;
             color: white;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
         }
         #yes:hover {
             transform: scale(1.1);
         }
         #no {
-            font-size: 20px;
             background-color: #dc3545;
             color: white;
-            border-radius: 10px;
-            left: 100px;
         }
         #no:hover {
             transform: rotate(10deg);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            button {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            button {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 </head>
@@ -54,32 +73,22 @@
     <h1>Will You Marry Me? 💍</h1>
     <div class="buttons">
         <button id="yes" onclick="sayYes()">Yes</button>
-        <button id="no" onmouseover="runAway()" onclick="makeYesBigger()">No</button>
+        <button id="no" onmouseover="runAway()">No</button>
     </div>
 
     <script>
-        let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
-        let yesSize = 20;
-
-        function makeYesBigger() {
-            yesSize += 10;
-            yesButton.style.fontSize = yesSize + "px";
-            yesButton.style.padding = (yesSize / 2) + "px " + (yesSize) + "px";
-            yesButton.style.boxShadow = `0 0 ${yesSize / 2}px rgba(40, 167, 69, 0.7)`;
-        }
 
         function runAway() {
-            let x = Math.random() * (window.innerWidth - 200);
-            let y = Math.random() * (window.innerHeight - 100);
-            noButton.style.position = "absolute";
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         }
 
         function sayYes() {
-            document.body.style.backgroundColor = "#FFD700";
-            alert("Yay! I love you, Sanaa! ❤️");
+            document.querySelector('h1').innerText = "Thanks, my love";
+            document.querySelector('.buttons').style.display = 'none';
         }
     </script>
 </body>
