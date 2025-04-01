@@ -17,6 +17,7 @@
         .buttons {
             display: flex;
             justify-content: center;
+            align-items: center; /* Center buttons vertically */
             margin-top: 20px;
             flex-wrap: wrap;
             position: relative;
@@ -43,8 +44,9 @@
             background-color: #dc3545;
             color: white;
         }
+        /* Remove tilt effect */
         #no:hover {
-            transform: rotate(10deg);
+            transform: none;
         }
 
         /* Media Queries */
